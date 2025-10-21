@@ -1,0 +1,306 @@
+
+
+ /* .navbar{
+    display:flex;
+   
+    background-color: rgba(0,0,0,0.5);
+    height:6vh;
+   color:white;
+   box-shadow: 2px 2px 10px 1px rgba(157, 101, 101, 0.5);
+
+    
+
+ }
+ .navbar-box{
+    display: flex;
+    align-items: center;
+    
+    justify-content: space-between;
+    
+    height: 6vh;
+    width: 100%;
+    opacity: 0.69;
+   
+    
+    background-color: black;
+    color: white;
+ }
+ 
+
+ .pics {
+    display:flex;
+    align-items: center;
+    font-size: x-large;
+
+ }
+
+ .pics img{
+    border-radius: 10px;
+ } */
+
+
+ /* Overall navbar glass look 
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(255, 255, 255, 0.08); 
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  color: white;
+
+  box-shadow: 0 4px 30px rgba(211, 55, 55, 0.3);
+}
+
+.navbar-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+   opacity: 0.69;
+}
+
+.pics {
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem;
+  gap: 10px;
+}
+
+.logo {
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.25);
+}
+
+
+.profile-details {
+  position: absolute;
+  top: 65px;
+  right: 20px;
+  width: 230px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 15px;
+
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+  transform: translateY(-20px);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s ease;
+}
+
+.profile-details.open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.profile-card {
+  padding: 20px;
+  text-align: center;
+  color: white;
+}
+
+.profile-pic {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  margin-bottom: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.profile-info h4 {
+  margin: 5px 0 2px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.profile-info p {
+  font-size: 13px;
+  color: #ddd;
+}
+
+.logout-btn {
+  margin-top: 10px;
+  padding: 8px 20px;
+  background: rgba(255, 0, 0, 0.5);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s;
+}
+
+.logout-btn:hover {
+  background: rgba(255, 0, 0, 0.8);
+  transform: scale(1.05);
+}
+*/
+
+/* ========== NAVBAR ========== */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 65px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Glass gradient look */
+  background: linear-gradient(120deg, rgba(30, 30, 30, 0.4), rgba(80, 80, 80, 0.2));
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+
+  box-shadow: 0 4px 30px rgba(23, 155, 236, 0.3);
+  color: white;
+}
+
+.navbar-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 92%;
+}
+
+.menu-icon svg,
+.profile-icon svg {
+  color: white;
+  transition: 0.3s ease;
+}
+
+.menu-icon svg:hover,
+.profile-icon svg:hover {
+  color: #00ffe0;
+  transform: scale(1.1);
+}
+
+/* ========== LOGO ========== */
+.pics {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  gap: 12px;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.logo {
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+  transition: 0.4s ease;
+}
+
+.logo:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+}
+
+.brand-name {
+  background: linear-gradient(90deg, #00ffe0, #7afcff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+
+/* ========== PROFILE DROPDOWN ========== */
+.profile-details {
+  position: absolute;
+  top: 75px;
+  right: 25px;
+  width: 240px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+
+  box-shadow: 0 10px 40px rgba(0, 255, 255, 0.2);
+  transform: translateY(-15px) scale(0.95);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.profile-details.open {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ========== PROFILE CARD CONTENT ========== */
+.profile-card {
+  padding: 18px;
+  text-align: center;
+  color: white;
+}
+
+.profile-pic {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 255, 255, 0.4);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+  margin-bottom: 10px;
+  transition: 0.4s ease;
+}
+
+.profile-pic:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.5);
+}
+
+.profile-info h4 {
+  margin: 5px 0 3px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.profile-info p {
+  font-size: 13px;
+  color: #ccc;
+  letter-spacing: 0.5px;
+}
+
+/* ========== LOGOUT BUTTON ========== */
+.logout-btn {
+  margin-top: 10px;
+  padding: 8px 25px;
+  background: linear-gradient(90deg, rgba(0, 255, 255, 0.4), rgba(0, 150, 255, 0.4));
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: linear-gradient(90deg, rgba(0, 255, 255, 0.7), rgba(0, 150, 255, 0.7));
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+@media (max-width: 768px) {
+  .profile-card {
+  padding: 18px;
+  text-align: center;
+  background-color: black;
+  color: white;
+}
+
+
+}
