@@ -92,7 +92,7 @@
           import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost:4000";
+axios.defaults.baseURL = "https://personal-assistant-kytu.onrender.com/";
 
 // ---------------- LOGIN ----------------
 export const loginUser = createAsyncThunk(
