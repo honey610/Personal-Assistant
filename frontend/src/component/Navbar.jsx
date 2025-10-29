@@ -6,6 +6,7 @@ import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../features/auth/authSlice";
+import { getProfile } from "../features/auth/authSlice";
 
 
 
@@ -19,8 +20,18 @@ export default function Navbar({toggleSidebar}) {
 
   const dispatch=useDispatch();
   const navigate=useNavigate();
+    const { user } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+    if (userId) {
+      dispatch(getProfile(userId));
+    }
+  }, [dispatch]);
+
   const handleLogout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("userId");
     dispatch(logout());
     navigate("/");
   };
@@ -75,8 +86,8 @@ export default function Navbar({toggleSidebar}) {
               className="profile-pic"
             />
             <div className="profile-info">
-              <h4>John Doe</h4>
-              <p>john.doe@example.com</p>
+              <h4>{user?.username}</h4>
+              <p>{user?.email}</p>
             </div>
             <button className="logout-btn" onClick={handleLogout}>Logout</button>
           </div>

@@ -24,7 +24,7 @@ export const login=async(req,res)=>{
             return res.status(400).json({message:"invalid credentials"})
         }
        const token =jwt.sign({userId:user._id},JWT_SECRET,{expiresIn:"1h"})
-       return res.status(200).json({token})
+       return res.status(200).json({token,userId:user._id,message:"login successful"})
        
 
 
@@ -57,4 +57,20 @@ export const  register=async(req,res)=>{
 
     }
 }
+
+export const getProfile=async(req,res)=>{
+    try{
+        const userId=req.params.id;
+        const user=await Auth.findById(userId).select("-password");
+        if(!user){
+            return res.status(404).json({message:"user not found"})
+        }
+        return res.status(200).json(user);
+
+    }catch(err){
+        return res.status(500).json({message:err.message})
+    }
+}
+
+
 

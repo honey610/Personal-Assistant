@@ -92,7 +92,8 @@
           import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-axios.defaults.baseURL = "https://personal-assistant-kytu.onrender.com/";
+axios.defaults.baseURL = "http://localhost:4000";
+// https://personal-assistant-kytu.onrender.com/
 
 // ---------------- LOGIN ----------------
 export const loginUser = createAsyncThunk(
@@ -100,7 +101,9 @@ export const loginUser = createAsyncThunk(
   async ({ email, password }, { rejectWithValue }) => {
     try {
       const response = await axios.post("/api/auth/login", { email, password });
-      return response.data; // { token }
+      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("userId", response.data.userId);
+      return response.data; // { token,userId,message }
     } catch (err) {
       return rejectWithValue(err.response.data);
     }
@@ -119,12 +122,26 @@ export const registerUser = createAsyncThunk(
     }
   }
 );
+// ---------------- Get Profile ----------------
+export const getProfile = createAsyncThunk(
+  "auth/getProfile",
+  async (userId, { rejectWithValue }) => {
+    try {
+      const response = await axios.get(`/api/auth/profile/${userId}`);
+      return response.data; // { user profile data }
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
 
 const authSlice = createSlice({
   name: "auth",
   initialState: {
     token: localStorage.getItem("token") || null,
     status: "idle",
+    userId: localStorage.getItem("userId") || null,
     error: null,
     message: null,
     loggedIn: !!localStorage.getItem("token"),
@@ -149,6 +166,7 @@ const authSlice = createSlice({
       .addCase(loginUser.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.token = action.payload.token;
+        state.userId = action.payload.userId;
         state.loggedIn = true;
         state.message = null;
         localStorage.setItem("token", action.payload.token);
@@ -168,12 +186,29 @@ const authSlice = createSlice({
       .addCase(registerUser.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.message = "Registration successful! Please log in.";
+
         state.loggedIn = false;
         state.token = null;
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload?.message || "Registration failed";
+      })
+      // -------- GET PROFILE --------
+      .addCase(getProfile.pending, (state) => {
+        state.status = "loading";
+        state.error = null;
+        state.message = "Fetching profile...";
+      })
+      .addCase(getProfile.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.user = action.payload;
+        state.message = null;
+        // You can store profile data in state if needed
+      })
+      .addCase(getProfile.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.payload?.message || "Failed to fetch profile";
       });
   },
 });

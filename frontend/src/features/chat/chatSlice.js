@@ -3,8 +3,8 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { v1 as uuid } from "uuid";
 
-axios.defaults.baseURL = "https://personal-assistant-kytu.onrender.com/";
-
+axios.defaults.baseURL = "http://localhost:4000";
+// https://personal-assistant-kytu.onrender.com/
 
 // Send message to backend
 export const getResponse = createAsyncThunk(
