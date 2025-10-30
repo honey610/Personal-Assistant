@@ -18,6 +18,7 @@ app.use(express.json());
 const allowedOrigins = [
   "https://7czb1w3g-5173.inc1.devtunnels.ms",
   "http://localhost:5173",
+  "https://main.dgfh8yg4e4qqc.amplifyapp.com/"
 ];
 
 app.use(
